@@ -60,7 +60,7 @@ const onInputChange = (field, event) => {
     <Form :submit="onSubmit" method="POST">
       <p v-if="isLoading">Загрузка...</p>
       <template v-else>
-        <div>
+        <div class="div">
           <FormItem
               id="name"
               label="Введите имя"
@@ -145,6 +145,10 @@ const onInputChange = (field, event) => {
 <style scoped>
 .reg {
   text-align: center;
+  color: #fff;
+}
+.div{
+  color: #fff;
 }
 .button {
   position: relative;
@@ -169,7 +173,6 @@ const onInputChange = (field, event) => {
   left: 50%;
   height: 100%;
   transform: translateX(-50%);
-  z-index: -1000;
   background-repeat: no-repeat;
 }
 

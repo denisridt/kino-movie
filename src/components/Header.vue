@@ -2,10 +2,9 @@
 <template>
 
   <div class="header">
-    <img src="../../public/8086fe01a572a4feee3b136291356133.jpg" height="100" width="100" alt="Лого">
+    <router-link to="/"><img src="../../public/pngwing.com.png" height="120" width="250" alt="Лого"></router-link>
     <div class="nav">
       <router-link to="afisha"><p>Афиша</p></router-link>
-
       <router-link to="session"><p>Сеансы</p></router-link>
       <router-link to="/login"><p>Вход</p></router-link>
       <router-link to="register"><p>Регистрация</p></router-link>
@@ -22,6 +21,7 @@
   justify-content: space-around;
   align-items: center;
 }
+
 .nav {
   width: 500px;
   display: flex;
@@ -30,4 +30,9 @@
 a.router-link-exact-active {
   color: rgb(255, 98, 36);
 }
+a{
+  color: white;
+}
 </style>
+<script setup>
+</script>

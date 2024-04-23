@@ -86,6 +86,10 @@ const onInputChange = (field, event) => {
 <style scoped>
 .auth {
   text-align: center;
+  color: white;
+}
+div{
+  color: white;
 }
 .button {
   position: relative;
@@ -110,7 +114,6 @@ const onInputChange = (field, event) => {
   left: 50%;
   height: 100%;
   transform: translateX(-50%);
-  z-index: -1000;
   background-repeat: no-repeat;
 }
 
