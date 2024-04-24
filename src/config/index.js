@@ -1,1 +1,1 @@
-export const API_URL = 'http://name/api'
+export const API_URL = 'http://cinema/api'
