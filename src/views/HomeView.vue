@@ -3,25 +3,27 @@
   <div class="movie-panel">
     <img src="../../public/Rectangle 4.png" alt="Обложка фильма">
     <div class="info">
-      <h2>Город тайн: Исчезнувшая<br>(2D, 18+)</h2>
-      <p><strong>Страна:</strong> Страна</p>
-      <p><strong>Длительность:</strong> Длительность</p>
-      <p><strong>Режисер:</strong> Режисер</p>
-      <p><strong>Год:</strong> Год</p>
+      <h2>{{ film.name }}</h2>
+      <p><strong>Страна:</strong> {{ film.country }}</p>
+      <p><strong>Длительность:</strong> {{ film.duration }}</p>
+      <p><strong>Режиссер:</strong> {{ film.director }}</p>
+      <p><strong>Год:</strong> {{ film.year }}</p>
     </div>
   </div>
 
   <div class="work-area">
-    <div
-        v-for="(photo, index) in photos"
-        :key="index"
-        class="photo-item"
-        @mouseenter="showBuyButton(index)"
-        @mouseleave="hideBuyButton(index)"
-    >
-      <img :src="photo.url" alt="photo" />
-      <div v-if="photo.showBuyButton" class="buy-button">
-        <button>Купить билет</button>
+    <div v-if="film" class="film-details">
+      <div
+          v-for="(photo, index) in film.photo"
+          :key="index"
+          class="photo-item"
+          @mouseenter="showBuyButton(index)"
+          @mouseleave="hideBuyButton(index)"
+      >
+        <img :src="URL_PHOTO() + film.photo" alt="photo" />
+        <div v-if="photo.showBuyButton" class="buy-button">
+          <button>Купить билет</button>
+        </div>
       </div>
     </div>
   </div>
@@ -41,33 +43,58 @@
 
 </template>
 <script>
+import axios from 'axios';
+import {API_URL, URL_PHOTO} from "@/config/index.js";
+
 export default {
   data() {
     return {
-      photos: [
-        { url: '../../public/film/city.jpg', showBuyButton: false },
-        { url: '../../public/film/freid.jpg', showBuyButton: false },
-        { url: '../../public/film/imperia.jpg', showBuyButton: false },
-        { url: '../../public/film/onegin.jpg', showBuyButton: false },
-        { url: '../../public/film/let.jpg', showBuyButton: false },
-        { url: '../../public/film/patina.jpg', showBuyButton: false },
-        { url: '../../public/film/koral.jpg', showBuyButton: false },
-        { url: '../../public/film/zoloto.jpg', showBuyButton: false },
-        { url: '../../public/film/sled.jpg', showBuyButton: false },
-        { url: '../../public/film/man.jpg', showBuyButton: false },
-
-      ],
+      film: {},
     };
   },
   methods: {
+    URL_PHOTO() {
+      return URL_PHOTO
+    },
     showBuyButton(index) {
-      this.photos[index].showBuyButton = true;
+      if (this.film && this.film.photo[index]) {
+        this.film.photo[index].showBuyButton = true;
+      }
     },
     hideBuyButton(index) {
-      this.photos[index].showBuyButton = false;
+      if (this.film && this.film.photos[index]) {
+        this.film.photo[index].showBuyButton = false;
+      }
+    },
+    async fetchFilm(filmId) {
+      try {
+        const response = await axios.get(`film/${filmId}`);
+        this.film = response.data;
+        // Инициализируем флаг showBuyButton для каждой фотографии
+        if (this.film.photo) {
+          this.film.photos.forEach((photo) => {
+            photo.showBuyButton = false;
+          });
+        }
+      } catch (error) {
+        console.error('Ошибка при получении данных фильма:', error);
+      }
     },
   },
+  mounted() {
+// Выполняем запрос к API для получения данных фильма
+    axios.get(API_URL + '/film/1') // Здесь 1 - это ID фильма, который вы хотите получить
+        .then(response => {
+          this.film = response.data // Предполагается, что API возвращает объект с данными фильма
+          console.log(this.film)
+        })
+        .catch(error => {
+          console.error('Ошибка при получении данных фильма', error);
+        });
+  }
 };
+
+
 </script>
 <style scoped>
 .footer {
@@ -94,9 +121,9 @@ export default {
   position: relative;
   top: 30px;
   right: 130px;
-    width: 30px;
-    height: 30px;
-      cursor: pointer;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
   margin: 5px 25px 0 0;
 }
 
