@@ -1,254 +1,46 @@
-
 <template>
-
   <div class="panel">
     <h2>Афиша</h2>
-    <section class="sect">
     <h3>Сегодня</h3>
-    <div class="info">
-      <img src="../../public/film/city.jpg" alt="F">
-      <div class="title-and-info">
-        <router-link to=""><h1>Город тайн: Исчезнувшая (18+)</h1></router-link>
-        <div class="text-info">
-          <div class="row">
-            <p><strong>Год:</strong></p>
-            <p>Год</p>
-          </div>
-          <div class="row">
-            <p><strong>Страна:</strong></p>
-            <p>Страна</p>
-          </div>
-          <div class="row">
-            <p><strong>Слоган:</strong></p>
-            <p>Слоган</p>
-          </div>
-          <div class="row">
-            <p><strong>Режисер:</strong></p>
-            <p>Режисер</p>
-          </div>
-          <div class="row">
-            <p><strong>Жанр:</strong></p>
-            <p>Жанр</p>
-          </div>
-          <div class="row">
-            <p><strong>Продолжительность:</strong></p>
-            <p>Продолжительность</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-    <section class="sect-next">
+    <section class="sect" v-for="film in films" :key="film.id">
 
       <div class="info">
-        <img src="../../public/film/city.jpg" alt="F">
+        <img :src="URL_PHOTO + film.photo" alt="F">
         <div class="title-and-info">
-          <router-link to=""><h1>Город тайн: Исчезнувшая (18+)</h1></router-link>
+          <router-link :to="`/film/${film.id}`">
+            <h1>{{ film.name }}</h1>
+          </router-link>
           <div class="text-info">
             <div class="row">
               <p><strong>Год:</strong></p>
-              <p>Год</p>
+              <p>{{ film.year }}</p>
             </div>
             <div class="row">
               <p><strong>Страна:</strong></p>
-              <p>Страна</p>
-            </div>
-            <div class="row">
-              <p><strong>Слоган:</strong></p>
-              <p>Слоган</p>
+              <p>{{ film.country }}</p>
             </div>
             <div class="row">
               <p><strong>Режисер:</strong></p>
-              <p>Режисер</p>
+              <p>{{ film.director }}</p>
             </div>
             <div class="row">
               <p><strong>Жанр:</strong></p>
-              <p>Жанр</p>
+              <p>{{ film.genreName }}</p> <!-- Используем новое свойство -->
             </div>
             <div class="row">
               <p><strong>Продолжительность:</strong></p>
-              <p>Продолжительность</p>
+              <p>{{ film.duration }}</p>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="sect-next">
-
-      <div class="info">
-        <img src="../../public/film/city.jpg" alt="F">
-        <div class="title-and-info">
-          <router-link to=""><h1>Город тайн: Исчезнувшая (18+)</h1></router-link>
-          <div class="text-info">
-            <div class="row">
-              <p><strong>Год:</strong></p>
-              <p>Год</p>
-            </div>
-            <div class="row">
-              <p><strong>Страна:</strong></p>
-              <p>Страна</p>
-            </div>
-            <div class="row">
-              <p><strong>Слоган:</strong></p>
-              <p>Слоган</p>
-            </div>
-            <div class="row">
-              <p><strong>Режисер:</strong></p>
-              <p>Режисер</p>
-            </div>
-            <div class="row">
-              <p><strong>Жанр:</strong></p>
-              <p>Жанр</p>
-            </div>
-            <div class="row">
-              <p><strong>Продолжительность:</strong></p>
-              <p>Продолжительность</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="sect-next">
-
-      <div class="info">
-        <img src="../../public/film/city.jpg" alt="F">
-        <div class="title-and-info">
-          <router-link to=""><h1>Город тайн: Исчезнувшая (18+)</h1></router-link>
-          <div class="text-info">
-            <div class="row">
-              <p><strong>Год:</strong></p>
-              <p>Год</p>
-            </div>
-            <div class="row">
-              <p><strong>Страна:</strong></p>
-              <p>Страна</p>
-            </div>
-            <div class="row">
-              <p><strong>Слоган:</strong></p>
-              <p>Слоган</p>
-            </div>
-            <div class="row">
-              <p><strong>Режисер:</strong></p>
-              <p>Режисер</p>
-            </div>
-            <div class="row">
-              <p><strong>Жанр:</strong></p>
-              <p>Жанр</p>
-            </div>
-            <div class="row">
-              <p><strong>Продолжительность:</strong></p>
-              <p>Продолжительность</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="sect-next">
-
-      <div class="info">
-        <img src="../../public/film/city.jpg" alt="F">
-        <div class="title-and-info">
-          <router-link to=""><h1>Город тайн: Исчезнувшая (18+)</h1></router-link>
-          <div class="text-info">
-            <div class="row">
-              <p><strong>Год:</strong></p>
-              <p>Год</p>
-            </div>
-            <div class="row">
-              <p><strong>Страна:</strong></p>
-              <p>Страна</p>
-            </div>
-            <div class="row">
-              <p><strong>Слоган:</strong></p>
-              <p>Слоган</p>
-            </div>
-            <div class="row">
-              <p><strong>Режисер:</strong></p>
-              <p>Режисер</p>
-            </div>
-            <div class="row">
-              <p><strong>Жанр:</strong></p>
-              <p>Жанр</p>
-            </div>
-            <div class="row">
-              <p><strong>Продолжительность:</strong></p>
-              <p>Продолжительность</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="sect-next">
-
-      <div class="info">
-        <img src="../../public/film/city.jpg" alt="F">
-        <div class="title-and-info">
-          <router-link to=""><h1>Город тайн: Исчезнувшая (18+)</h1></router-link>
-          <div class="text-info">
-            <div class="row">
-              <p><strong>Год:</strong></p>
-              <p>Год</p>
-            </div>
-            <div class="row">
-              <p><strong>Страна:</strong></p>
-              <p>Страна</p>
-            </div>
-            <div class="row">
-              <p><strong>Слоган:</strong></p>
-              <p>Слоган</p>
-            </div>
-            <div class="row">
-              <p><strong>Режисер:</strong></p>
-              <p>Режисер</p>
-            </div>
-            <div class="row">
-              <p><strong>Жанр:</strong></p>
-              <p>Жанр</p>
-            </div>
-            <div class="row">
-              <p><strong>Продолжительность:</strong></p>
-              <p>Продолжительность</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="sect-next">
-
-      <div class="info">
-        <img src="../../public/film/city.jpg" alt="F">
-        <div class="title-and-info">
-          <router-link to=""><h1>Город тайн: Исчезнувшая (18+)</h1></router-link>
-          <div class="text-info">
-            <div class="row">
-              <p><strong>Год:</strong></p>
-              <p>Год</p>
-            </div>
-            <div class="row">
-              <p><strong>Страна:</strong></p>
-              <p>Страна</p>
-            </div>
-            <div class="row">
-              <p><strong>Слоган:</strong></p>
-              <p>Слоган</p>
-            </div>
-            <div class="row">
-              <p><strong>Режисер:</strong></p>
-              <p>Режисер</p>
-            </div>
-            <div class="row">
-              <p><strong>Жанр:</strong></p>
-              <p>Жанр</p>
-            </div>
-            <div class="row">
-              <p><strong>Продолжительность:</strong></p>
-              <p>Продолжительность</p>
+            <div class="row-description">
+              <p><strong>Описание:</strong></p>
+              <p>{{ film.description }}</p>
             </div>
           </div>
         </div>
       </div>
     </section>
   </div>
+
   <div class="footer">
     <div class="address">
       <p>
@@ -261,19 +53,42 @@
     </div>
     <p>© 2014 – 2024. ООО «Popcorn film».</p>
   </div>
+
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+import {URL_PHOTO,API_URL} from "@/config/index.js";
+
+const films = ref([]);
+
+onMounted(async () => {
+  try {
+    const response = await axios.get(API_URL+ '/film');
+    const filmsData = response.data;
+
+
+
+
+
+
+    films.value = filmsData;
+  } catch (error) {
+    console.error('Ошибка при получении фильмов:', error);
+  }
+});
 
 </script>
+
+
 
 <style scoped>
 a{
   color: mediumorchid;
 }
 h1{
-  margin-left: 100px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   font-size: 34px;
 }
 h2{
@@ -283,6 +98,9 @@ h2{
   color: mediumorchid;
 }
 h3{
+  padding-top: 15px;
+  background-color: black;
+  width: 1080px;
   display: flex;
   justify-content: center;
   color: white;
@@ -291,22 +109,18 @@ h3{
   font-size: 30px;
 }
 .sect{
+ padding-top: 1px;
   color: mediumorchid;
   background: black;
   width: 1080px;
   height: 500px;
 }
-.sect-next{
-  padding-top: 1px;
-  color: mediumorchid;
-  background: black;
-  width: 1080px;
-  height: 500px;
-}
+
 img{
+  margin-top: 50px;
   width: 240px;
   height: 350px;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 .text-info {
   display: grid;
@@ -326,6 +140,12 @@ img{
 }
 .row {
   display: contents;
+
+}
+.row-description{
+  width: 500px;
+  font-size: 15px;
+  line-height: 20px;
 }
 .footer {
   display: flex;

@@ -11,22 +11,7 @@
     </div>
   </div>
 
-  <div class="work-area">
-    <div v-if="film" class="film-details">
-      <div
-          v-for="(photo, index) in film.photo"
-          :key="index"
-          class="photo-item"
-          @mouseenter="showBuyButton(index)"
-          @mouseleave="hideBuyButton(index)"
-      >
-        <img :src="URL_PHOTO() + film.photo" alt="photo" />
-        <div v-if="photo.showBuyButton" class="buy-button">
-          <button>Купить билет</button>
-        </div>
-      </div>
-    </div>
-  </div>
+    <SectPhotos :film="film"/>
 
   <div class="footer">
     <div class="address">
@@ -45,41 +30,17 @@
 <script>
 import axios from 'axios';
 import {API_URL, URL_PHOTO} from "@/config/index.js";
+import SectPhotos from "@/components/SectPhotos.vue";
 
 export default {
+  components: {SectPhotos},
   data() {
     return {
       film: {},
     };
   },
   methods: {
-    URL_PHOTO() {
-      return URL_PHOTO
-    },
-    showBuyButton(index) {
-      if (this.film && this.film.photo[index]) {
-        this.film.photo[index].showBuyButton = true;
-      }
-    },
-    hideBuyButton(index) {
-      if (this.film && this.film.photos[index]) {
-        this.film.photo[index].showBuyButton = false;
-      }
-    },
-    async fetchFilm(filmId) {
-      try {
-        const response = await axios.get(`film/${filmId}`);
-        this.film = response.data;
-        // Инициализируем флаг showBuyButton для каждой фотографии
-        if (this.film.photo) {
-          this.film.photos.forEach((photo) => {
-            photo.showBuyButton = false;
-          });
-        }
-      } catch (error) {
-        console.error('Ошибка при получении данных фильма:', error);
-      }
-    },
+
   },
   mounted() {
 // Выполняем запрос к API для получения данных фильма
@@ -133,42 +94,6 @@ export default {
   font-size: 17px;
   color: #fff;
 }
-.work-area {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 5px;
-}
-
-.photo-item {
-  position: relative;
-  overflow: hidden;
-}
-
-.photo-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.buy-button {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.buy-button button {
-  padding: 10px 20px;
-  background-color: rebeccapurple;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
 
 
 
@@ -203,7 +128,7 @@ h1{
   background-color: rebeccapurple;
   padding: 6px;
   text-align: center;
-  width: 210px;
+  width: 230px;
   position: relative;
   top: 20px;
 }
