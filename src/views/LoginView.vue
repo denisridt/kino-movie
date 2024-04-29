@@ -8,6 +8,7 @@ import {login} from "@/api/methods/auth/login.js";
 import {useAuthStore} from "@/stores/auth.js";
 
 
+
 const { setToken} = useAuthStore()
 
 const inputData = reactive({
@@ -51,6 +52,7 @@ const onInputChange = (field, event) => {
   errors.data[field] = []
   inputData[field] = value
 }
+
 </script>
 
 <template>

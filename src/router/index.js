@@ -4,6 +4,8 @@ import RegisterView from "@/views/RegisterView.vue";
 import AfishaView from "@/views/AfishaView.vue";
 import SessionView from "@/views/SessionView.vue";
 import HomeView from "@/views/HomeView.vue";
+import ProfileView from "@/views/ProfileView.vue";
+import LogPasView from "@/views/LogPasView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +34,16 @@ const router = createRouter({
       path: '/session',
       name: 'session',
       component: SessionView
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: ProfileView
+    },
+    {
+      path: '/smena',
+      name: 'smena',
+      component: LogPasView
     },
   ]
 })
