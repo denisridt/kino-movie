@@ -45,6 +45,7 @@
 import axios from 'axios';
 import { ref, reactive } from 'vue';
 import { API_URL } from "@/config/index.js";
+import router from "@/router/index.js";
 
 const user = reactive({
   login: '',
@@ -70,6 +71,7 @@ async function updateUser() {
 
     if (response.status === 200) {
       console.log('Данные пользователя успешно обновлены', response.data);
+      await router.replace('/profile')
     } else {
       throw new Error('Ошибка HTTP: ' + response.status);
     }
