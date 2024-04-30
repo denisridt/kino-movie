@@ -64,26 +64,26 @@ import axios from 'axios';
 import { ref, onMounted } from 'vue';
 import { API_URL } from "@/config/index.js";
 
+const userData = ref({});
 async function fetchUserData() {
   try {
     // Получаем токен из localStorage
-    const token = localStorage.getItem('token');
+    const api_token = localStorage.getItem('api_token');
 
     // Если токен не найден, выбрасываем ошибку
-    if (!token) {
+    if (!api_token) {
       throw new Error('Токен авторизации не найден');
     }
-
     // Отправляем GET-запрос к API с токеном авторизации
-    const response = await axios.get(`${API_URL}/user`, {
+    const response = await axios.get(API_URL + `/user`, {
       headers: {
-        'Authorization': `Bearer ${token}` // Используйте 'Bearer' с токеном авторизации
+        'Authorization': `Bearer ${api_token}` // Используйте 'Bearer' с токеном авторизации
       }
     });
-
     // Если запрос успешен, возвращаем данные пользователя
     if (response.status === 200) {
-      return response.data;
+      userData.value = response.data
+
     } else {
       throw new Error('Ошибка HTTP: ' + response.status);
     }
@@ -92,6 +92,7 @@ async function fetchUserData() {
     throw error; // Перебрасываем ошибку, чтобы ее можно было обработать где-то выше
   }
 }
+
 
 // Вызываем функцию fetchUserData при загрузке компонента
 fetchUserData().then(userData => {

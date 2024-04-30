@@ -1,7 +1,7 @@
 <template>
   <h1>Сейчас в кино</h1>
   <div class="movie-panel">
-    <img src="../../public/Rectangle 4.png" alt="Обложка фильма">
+    <img src="../../public/Rectangle 4.jpg" alt="Обложка фильма">
     <div class="info">
       <h2>{{ film.name }}</h2>
       <p><strong>Страна:</strong> {{ film.country }}</p>
