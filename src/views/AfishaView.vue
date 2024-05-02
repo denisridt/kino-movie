@@ -31,10 +31,10 @@
               <p><strong>Продолжительность:</strong></p>
               <p>{{ film.duration }}</p>
             </div>
-            <div class="row-description">
-              <p><strong>Описание:</strong></p>
-              <p>{{ film.description }}</p>
-            </div>
+          </div>
+          <div class="row-description">
+            <p><strong>Описание:</strong></p>
+            <p>{{ film.description }}</p>
           </div>
         </div>
       </div>
@@ -67,11 +67,6 @@ onMounted(async () => {
   try {
     const response = await axios.get(API_URL+ '/film');
     const filmsData = response.data;
-
-
-
-
-
 
     films.value = filmsData;
   } catch (error) {
@@ -142,8 +137,9 @@ img{
   display: contents;
 
 }
+
 .row-description{
-  width: 500px;
+  width: 800px;
   font-size: 15px;
   line-height: 20px;
 }

@@ -7,7 +7,7 @@
             :key="index"
             class="photo-item"
         >
-          <img :src="URL_PHOTO() + photo.url" alt="photo" @error="handleImageError(index)" />
+          <img :src="URL_PHOTO + photo.url" alt="photo" @error="handleImageError(index)" />
           <div class="buy-button-container">
             <button class="buy-button">Купить билет</button>
           </div>
