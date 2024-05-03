@@ -41,10 +41,14 @@ const router = createRouter({
       component: ProfileView
     },
     {
+
+    },
+    {
       path: '/smena',
       name: 'smena',
       component: LogPasView
     },
+
   ]
 })
 
