@@ -17,7 +17,13 @@ export default defineComponent({
 
 
 <style scoped>
+div{
+  display: flex;
+  flex-direction:column ;
+}
 h1{
-  color: #7d2ae8;
+  color: cyan;
+  align-self: center;
+  margin: 0 0 20px 0;
 }
 </style>

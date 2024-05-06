@@ -6,6 +6,7 @@ import SessionView from "@/views/SessionView.vue";
 import HomeView from "@/views/HomeView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 import LogPasView from "@/views/LogPasView.vue";
+import AstralView from "@/views/AstralView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,7 +42,9 @@ const router = createRouter({
       component: ProfileView
     },
     {
-
+      path: '/film/20',
+      name: 'astral',
+      component: AstralView
     },
     {
       path: '/smena',

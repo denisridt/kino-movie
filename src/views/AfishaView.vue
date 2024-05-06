@@ -1,7 +1,8 @@
 <template>
   <div class="panel">
+    <div class="div">
     <h2>Афиша</h2>
-    <h3>Сегодня</h3>
+    </div>
     <section class="sect" v-for="film in films" :key="film.id">
 
       <div class="info">
@@ -12,29 +13,29 @@
           </router-link>
           <div class="text-info">
             <div class="row">
-              <p><strong>Год:</strong></p>
-              <p>{{ film.year }}</p>
+              <p class="row-row"><strong>Год:</strong></p>
+              <p class="info-info">{{ film.year }}</p>
             </div>
             <div class="row">
-              <p><strong>Страна:</strong></p>
-              <p>{{ film.country }}</p>
+              <p class="row-row"><strong>Страна:</strong></p>
+              <p class="info-info">{{ film.country }}</p>
             </div>
             <div class="row">
-              <p><strong>Режисер:</strong></p>
-              <p>{{ film.director }}</p>
+              <p class="row-row"><strong>Режисер:</strong></p>
+              <p class="info-info">{{ film.director }}</p>
             </div>
             <div class="row">
-              <p><strong>Жанр:</strong></p>
-              <p>{{ film.genreName }}</p> <!-- Используем новое свойство -->
+              <p class="row-row"><strong>Жанр:</strong></p>
+              <p class="info-info">{{ film.genreName }}</p> <!-- Используем новое свойство -->
             </div>
             <div class="row">
-              <p><strong>Продолжительность:</strong></p>
-              <p>{{ film.duration }}</p>
+              <p class="row-row"><strong>Продолжительность:</strong></p>
+              <p class="info-info">{{ film.duration }}</p>
             </div>
           </div>
           <div class="row-description">
-            <p><strong>Описание:</strong></p>
-            <p>{{ film.description }}</p>
+            <p class="row-row"><strong>Описание:</strong></p>
+            <p class="info-info">{{ film.description }}</p>
           </div>
         </div>
       </div>
@@ -79,18 +80,29 @@ onMounted(async () => {
 
 
 <style scoped>
+.info-info{
+  color: whitesmoke;
+}
+.row-row{
+  color: wheat;
+}
+
 a{
-  color: mediumorchid;
+  color: cyan;
 }
 h1{
   margin-bottom: 30px;
   font-size: 34px;
 }
-h2{
-  font-size: 36px;
-  margin-left: 50px;
-  margin-bottom: 50px;
-  color: mediumorchid;
+.div{
+  display: flex;
+  flex-direction:column ;
+}
+.div > h2{
+  color: cyan;
+  align-self: center;
+  margin: 0 0 20px 0;
+  font-size: 34px;
 }
 h3{
   padding-top: 15px;
