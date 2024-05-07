@@ -124,6 +124,7 @@ export default {
   margin: 14px 0;
 }
 h1{
+  font-size: 27px;
   color: #fff;
   background-color: rebeccapurple;
   padding: 6px;
